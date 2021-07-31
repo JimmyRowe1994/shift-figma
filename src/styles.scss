@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+
+    // Defaults
+    font-family: 'Raleway', sans-serif;
+    font-weight: var(--tw-normal);
+}
+
+:root {
+    // Colors
+    --c-shift-red: #D71A64;
+    --c-grey: #F9FAFC;
+
+    // Spacing
+    --s-1: 8px;
+    --s-2: calc(var(--s-1) * 2);
+    --s-3: calc(var(--s-1) * 3);
+    --s-4: calc(var(--s-1) * 4);
+    --s-5: calc(var(--s-1) * 5);
+    --s-6: calc(var(--s-1) * 6);
+    --s-7: calc(var(--s-1) * 7);
+    --s-8: calc(var(--s-1) * 8);
+    --s-9: calc(var(--s-1) * 9);
+    --s-10: calc(var(--s-1) * 10);
+
+    // Font weights
+    --tw-light: 300;
+    --tw-normal: 400;
+    --tw-medium: 500;
+    --tw-semi-bold: 600;
+    --tw-bold: 700;
+
+    // Box shadows
+    --box-shadow-light: 0px 2px 3.5px rgba(0, 0, 0, 0.25);
+    --box-shadow-mid: 0px 2px 7px rgba(0, 0, 0, 0.25);
+    --box-shadow-dark: 0px 2px 10px rgba(0, 0, 0, 0.25);
+}

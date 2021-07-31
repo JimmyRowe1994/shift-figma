@@ -1,0 +1,19 @@
+.component {
+    background: var(--c-grey);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-top: var(--s-3);
+    border-radius: var(--s-1);
+}
+
+.image {
+    width: 30%;
+    height: 35%;
+}
+
+.text {
+    font-weight: var(--tw-bold);
+}

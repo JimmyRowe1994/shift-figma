@@ -1,0 +1,8 @@
+.component {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 100px;
+    gap: var(--s-3);
+    width: 684px;
+    margin: auto;
+}

@@ -1,0 +1,10 @@
+.component {
+    background: var(--c-shift-red);
+    padding: calc(var(--s-1) * 0.5) var(--s-2);
+    color: white;
+    border: none;
+    border-radius: var(--s-2);
+    cursor: pointer;
+    box-shadow: var(--box-shadow-light);
+    font-size: 16px;
+}

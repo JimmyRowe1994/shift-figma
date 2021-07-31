@@ -1,0 +1,55 @@
+.component {
+    border-radius: 8px;
+    display: flex;
+    flex-flow: column;
+    flex-grow: 0.5 1;
+}
+
+.containerWrapper {
+    display: flex;
+    flex: 1;
+}
+
+.container {
+    &:not(:last-child) {
+        flex: 1;
+    }
+
+    &:last-child {
+        // align-self: flex-end;
+    }
+}
+
+.title {
+    margin: 0;
+    font-weight: var(--tw-semi-bold);
+    font-size: 22px;
+    line-height: var(--s-2);
+}
+
+.date {
+    color: #868686;
+    font-size: 12px;
+    font-weight: var(--tw-semi-bold);
+    margin-bottom: var(--s-2);
+}
+
+.price {
+    color: var(--c-shift-red);
+    font-size: 26px;
+    text-decoration: none;
+    font-weight: var(--tw-semi-bold);
+}
+
+.bestPriceTag {
+    background: var(--c-shift-red);
+    padding: 5px;
+    color: white;
+    border: none;
+    border-radius: var(--s-2);
+    box-shadow: var(--box-shadow-light);
+    font-size: 12px;
+    margin: 0;
+    text-align: center;
+    align-self: flex-end;
+}
