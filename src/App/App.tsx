@@ -1,8 +1,8 @@
 import { Checkbox, Slider, Typography } from "@material-ui/core";
+import { withStyles } from "@material-ui/styles";
 import React from "react";
 import Button from "../components/Button";
-import Card from "../components/Card";
-import DateCard from "../components/DateCard";
+import { sliderMarks } from "./SliderMarks";
 import DateCards from "../components/DateCards";
 import InfoImage from "../components/InfoImage";
 import styles from "./App.module.scss";
@@ -21,9 +21,43 @@ export const App: React.FC = () => {
 
     const determineTimeSelected = (number: number) => {
         const morningOrAfternoon = number >= 12 ? "pm" : "am";
-
-        return <span className={styles.timeRangeSelectorValue}>{`${number % 12}${morningOrAfternoon}`}</span>
+        const hour = number % 12 === 0 ? 12 : number % 12;
+        return <span className={styles.timeRangeSelectorValue}>{`${hour}${morningOrAfternoon}`}</span>
     };
+
+    const handleChange = (event: any, newValue: number | number[]) => {
+        setTimeRangeSelectorValues(newValue as number[]);
+    };
+
+    const TimeRangeSlider = withStyles({
+        root: {
+          color: '#D71A64',
+          height: 8,
+        },
+        thumb: {
+          height: 24,
+          width: 24,
+          backgroundColor: '#fff',
+          border: '5px solid currentColor',
+          marginTop: -8,
+          marginLeft: -12,
+          '&:focus, &:hover, &$active': {
+            boxShadow: 'inherit',
+          },
+        },
+        active: {},
+        valueLabel: {
+          left: 'calc(-50% - 2px)',
+        },
+        track: {
+          height: 8,
+          borderRadius: 4,
+        },
+        rail: {
+          height: 8,
+          borderRadius: 4,
+        },
+      })(Slider);
 
     return (
         <>
@@ -74,8 +108,14 @@ export const App: React.FC = () => {
                     <Typography id="timeRangeSelector" gutterBottom>
                         <h2>Your pickup will be between {determineTimeSelected(timeRangeSelectorValues[0])} and {determineTimeSelected(timeRangeSelectorValues[1])}</h2>
                     </Typography>
-                    <Slider
+                    <TimeRangeSlider
+                        id="timeRangeSelector"
                         value={timeRangeSelectorValues}
+                        onChange={handleChange}
+                        marks={sliderMarks}
+                        min={0}
+                        max={24}
+                        aria-label="time range slider"
                     />
                 </section>
                 <DateCards />
