@@ -12,19 +12,21 @@
 
 .container {
     &:not(:last-child) {
+        display: flex;
         flex: 1;
+        flex-direction: column;
     }
 
     &:last-child {
-        // align-self: flex-end;
+        align-self: flex-end;
     }
 }
 
 .title {
-    margin: 0;
+    margin: 0 0 var(--s-1) 0;
     font-weight: var(--tw-semi-bold);
     font-size: 22px;
-    line-height: var(--s-2);
+    line-height: var(--s-1);
 }
 
 .date {
@@ -44,12 +46,13 @@
 .bestPriceTag {
     background: var(--c-shift-red);
     padding: 5px;
+    width: 70px;
     color: white;
     border: none;
-    border-radius: var(--s-2);
+    border-radius: 8px;
     box-shadow: var(--box-shadow-light);
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: var(--tw-semi-bold);
     margin: 0;
     text-align: center;
-    align-self: flex-end;
 }

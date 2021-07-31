@@ -1,4 +1,4 @@
-import { Checkbox } from "@material-ui/core";
+import { Checkbox, Slider, Typography } from "@material-ui/core";
 import React from "react";
 import Button from "../components/Button";
 import Card from "../components/Card";
@@ -9,6 +9,7 @@ import styles from "./App.module.scss";
 
 export const App: React.FC = () => {
     const [twoPeopleRequired, setTwoPeopleRequired] = React.useState<boolean>(false);
+    const [timeRangeSelectorValues, setTimeRangeSelectorValues] = React.useState<number[]>([10, 22]);
 
     const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTwoPeopleRequired(event.target.checked);
@@ -16,6 +17,12 @@ export const App: React.FC = () => {
 
     const handleClickButton = (event: React.MouseEvent<HTMLButtonElement>): void => {
         console.log(`You clicked ${event.currentTarget.getAttribute("aria-label")}`);
+    };
+
+    const determineTimeSelected = (number: number) => {
+        const morningOrAfternoon = number >= 12 ? "pm" : "am";
+
+        return <span className={styles.timeRangeSelectorValue}>{`${number % 12}${morningOrAfternoon}`}</span>
     };
 
     return (
@@ -63,6 +70,14 @@ export const App: React.FC = () => {
                     <InfoImage image="devices" text="Fixed price, no matter what!" />
                 </section>
 
+                <section className={styles.timeRangeSelector}>
+                    <Typography id="timeRangeSelector" gutterBottom>
+                        <h2>Your pickup will be between {determineTimeSelected(timeRangeSelectorValues[0])} and {determineTimeSelected(timeRangeSelectorValues[1])}</h2>
+                    </Typography>
+                    <Slider
+                        value={timeRangeSelectorValues}
+                    />
+                </section>
                 <DateCards />
             </main>
         </>

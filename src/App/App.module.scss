@@ -46,5 +46,15 @@
     grid-template-rows: 140px;
     gap: var(--s-2);
     width: 500px;
-    margin: auto;
+    margin: 0 auto var(--s-4) auto;
+}
+
+.timeRangeSelector {
+    width: 600px;
+    text-align: center;
+    margin: 0 auto var(--s-4) auto;
+}
+
+.timeRangeSelectorValue {
+    color: var(--c-shift-red);
 }

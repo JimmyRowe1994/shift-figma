@@ -6,7 +6,7 @@ import cx from "classnames";
 
 interface Props extends DefaultProps<HTMLDivElement> {
     day: string;
-    date: Date;
+    date: string;
     price: number;
     isBestPrice?: boolean;
 }
@@ -17,7 +17,7 @@ export const DateCard: React.FC<Props> = ({ day, date, price, isBestPrice, class
             <h2 className={styles.title}>{day}</h2>
             <div className={styles.containerWrapper}>
                 <div className={styles.container}>
-                    <time dateTime="2008-02-14" className={styles.date}>6 Feburary</time>
+                    <time dateTime="2008-02-14" className={styles.date}>{date}</time>
                     {isBestPrice &&
                         <p className={styles.bestPriceTag}>Best Price</p>
                     }
