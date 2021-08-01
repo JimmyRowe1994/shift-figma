@@ -1,5 +1,4 @@
-import { Checkbox, Slider, Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/styles";
+import { Checkbox, createTheme, Slider, ThemeProvider, Typography } from "@material-ui/core";
 import React from "react";
 import Button from "../components/Button";
 import { sliderMarks } from "./SliderMarks";
@@ -29,35 +28,41 @@ export const App: React.FC = () => {
         setTimeRangeSelectorValues(newValue as number[]);
     };
 
-    const TimeRangeSlider = withStyles({
-        root: {
-          color: '#D71A64',
-          height: 8,
-        },
-        thumb: {
-          height: 24,
-          width: 24,
-          backgroundColor: '#fff',
-          border: '5px solid currentColor',
-          marginTop: -8,
-          marginLeft: -12,
-          '&:focus, &:hover, &$active': {
-            boxShadow: 'inherit',
-          },
-        },
-        active: {},
-        valueLabel: {
-          left: 'calc(-50% - 2px)',
-        },
-        track: {
-          height: 8,
-          borderRadius: 4,
-        },
-        rail: {
-          height: 8,
-          borderRadius: 4,
-        },
-      })(Slider);
+    const sliderStyles = createTheme({
+        overrides: {
+            MuiSlider: {
+                root: {
+                    color: '#D71A64',
+                    height: 8,
+                },
+                thumb: {
+                    height: 24,
+                    width: 24,
+                    backgroundColor: '#fff',
+                    border: '5px solid currentColor',
+                    marginTop: -8,
+                    marginLeft: -12,
+                    '&:focus, &:hover, &$active': {
+                        boxShadow: 'inherit',
+                    },
+                },
+                mark: {
+                    display: "none",
+                },
+                valueLabel: {
+                    left: 'calc(-50% - 2px)',
+                },
+                track: {
+                    height: 8,
+                    borderRadius: 4,
+                },
+                rail: {
+                    height: 8,
+                    borderRadius: 4,
+                }
+            }
+        }
+    });
 
     return (
         <>
@@ -108,15 +113,19 @@ export const App: React.FC = () => {
                     <Typography id="timeRangeSelector" gutterBottom>
                         <h2>Your pickup will be between {determineTimeSelected(timeRangeSelectorValues[0])} and {determineTimeSelected(timeRangeSelectorValues[1])}</h2>
                     </Typography>
-                    <TimeRangeSlider
-                        id="timeRangeSelector"
-                        value={timeRangeSelectorValues}
-                        onChange={handleChange}
-                        marks={sliderMarks}
-                        min={0}
-                        max={24}
-                        aria-label="time range slider"
-                    />
+                    <ThemeProvider theme={sliderStyles}>
+                        <Slider
+                            id="timeRangeSelector"
+                            value={timeRangeSelectorValues}
+                            onChange={handleChange}
+                            marks={sliderMarks}
+                            defaultValue={[timeRangeSelectorValues[0], timeRangeSelectorValues[1]]}
+                            min={0}
+                            max={24}
+                            aria-label="time range slider"
+                            step={1}
+                        />
+                    </ThemeProvider>
                 </section>
                 <DateCards />
             </main>
